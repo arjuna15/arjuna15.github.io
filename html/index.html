@@ -8,7 +8,7 @@
   
   <meta name="copyright" content="MACode ID, https://www.macodeid.com/">
   
-  <title>My Website</title>
+  <title>Portofolio</title>
 
   <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
   
@@ -61,7 +61,7 @@
     <!-- Navbar -->
     <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
       <div class="container">
-        <a href="" class="navbar-brand">My Website</a>
+        <a href="" class="navbar-brand">Portofolio</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
           <span class="ti-menu"></span>
         </button>
@@ -112,7 +112,7 @@
           <ul class="theme-list">
             <li><b>From:</b> Bogor, Indonesia</li>
             <li><b>Lives In:</b> Bogor, Indonesia</li>
-            <li><b>Age:</b> 18</li>
+            <li><b>Age:</b> <span id="umur"></span></li>
             <li><b>Gender:</b> Male</li>
           </ul>
           <a class="btn btn-theme-outline" href="my-cv.pdf">Download CV</a>
@@ -176,6 +176,14 @@
           <h2 class="fw-normal">Education</h2>
           <ul class="timeline mt-4 pr-md-5">
             <li>
+              <div class="title">2024</div>
+              <div class="details">
+                <h5>Collage</h5>
+                <small class="fg-theme">Poltekkes Jakarta II</small>
+                <p>I am learning electromedic.</p>
+              </div>
+            </li>
+            <li>
               <div class="title">2021</div>
               <div class="details">
                 <h5>Internship</h5>
@@ -212,6 +220,14 @@
         <div class="col-md-6 wow fadeInRight" data-wow-delay="200ms">
           <h2 class="fw-normal">Experience</h2>
           <ul class="timeline mt-4 pr-md-5">
+            <li>
+              <div class="title">2023</div>
+              <div class="details">
+                <h5>Make a system and Video from Puncak Media Bogor's Account</h5>
+                <small class="fg-theme">Puncak Media Bogor</small>
+                <p>I Worked in there as Admin and videographer.</p>
+              </div>
+            </li>
             <li>
               <div class="title">2022</div>
               <div class="details">
@@ -395,8 +411,8 @@
               <p>Follow me</p>
               <hr class="divider">
               <ul class="list-unstyled">
-                <li><a href="https://www.instagram.com/junancok">Instagram</a></li>
-                <li><a href="https://www.facebook.com/arjuna.rasyid.7">Facebook</a></li>
+                <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/junancok"> &nbsp; @junancok</a></li>
+                <li><i class="fa-brands fa-facebook"></i><a href="https://www.facebook.com/arjuna.rasyid.7"> &nbsp; Arjun Rasyid Andi</a></li>
               </ul>
             </div>
           </div>
@@ -405,19 +421,9 @@
               <p>Contact me</p>
               <hr class="divider">
               <ul class="list-unstyled">
-                <li><a href="https://wa.me/+6287720645336">+6287720645336</a></li>
-                <li><a href="https://wa.me/+6285880187422">+6285880187422</a></li>
+                <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/+6287720645336">&nbsp; +62881024677391</a></li>
+                <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/+6285880187422">&nbsp; +6281212142716</a></li>
               </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-center mt-3">
-          
-          <div class="col-lg-6">
-            
-          </div>
-            <div class="col-12">
-              <p class="text-center mb-0 mt-4">Copyright &copy;2021. All right reserved | by <a href="https://mail.google.com/mail/u/0/#inbox?compose=new/">Arjuna Arrasyid</a></p>
             </div>
           </div>
         </div>
@@ -449,7 +455,25 @@
     
   <script src="../assets/js/topbar-virtual.js"></script>
 
+  <script src="https://kit.fontawesome.com/326ec484be.js" crossorigin="anonymous"></script>
+
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
   
+  <script>
+    // Fungsi untuk menghitung umur
+    function hitungUmur() {
+        // Tanggal lahir
+        var tanggalLahir = new Date("2004-03-15");
+        // Tanggal sekarang
+        var tanggalSekarang = new Date();
+        // Perhitungan umur
+        var umur = tanggalSekarang.getFullYear() - tanggalLahir.getFullYear();
+        // Update elemen HTML dengan id "umur" dengan umur yang dihitung
+        document.getElementById("umur").innerText = umur;
+    }
+
+    // Panggil fungsi hitungUmur saat halaman dimuat
+    window.onload = hitungUmur;
+</script>
 </body>
 </html>

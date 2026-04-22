@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasCoarsePointer = window.matchMedia?.('(pointer: coarse)')?.matches ?? false;
     const allowMotion = !prefersReducedMotion;
 
+    // Enable reveal styles only when JS is running (prevents hidden content if JS/CDNs fail).
+    document.body.classList.add('reveal-on');
+
     // Icons (safe even if lucide fails to load)
     try {
         window.lucide?.createIcons?.();

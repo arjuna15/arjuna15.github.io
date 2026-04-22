@@ -492,9 +492,10 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .to-top { color: rgba(255, 255, 255, 0.72); }
 .to-top:hover { color: rgba(255, 255, 255, 0.92); }
 
-/* Reveal baseline (JS animates if available) */
-.reveal { opacity: 0; transform: translateY(14px); }
-.reveal.is-visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+/* Reveal baseline (only enabled when JS turns it on) */
+.reveal { opacity: 1; transform: none; }
+body.reveal-on .reveal { opacity: 0; transform: translateY(14px); }
+body.reveal-on .reveal.is-visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
 
 /* Cursor (enabled via JS) */
 .cursor,
@@ -541,8 +542,8 @@ body.has-custom-cursor .cursor-dot { display: block; }
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; }
-    .reveal.is-visible { transition: none; }
+    body.reveal-on .reveal { opacity: 1; transform: none; }
+    body.reveal-on .reveal.is-visible { transition: none; }
     .magnetic-area { padding: 0; margin: 0; }
     .project-card,
     .btn { transition: none; }

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full‑Stack Developer | Portfolio</title>
+    <meta name="description" content="Full‑stack developer portfolio focused on performance, accessibility, and modern web experiences.">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="src/js/main.js"></script>
+</head>
+<body class="site">
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div id="cursor" class="cursor" aria-hidden="true"></div>
+    <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+    <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <a class="logo" href="#hero" aria-label="Go to top"></a>
+
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+                <span class="nav-toggle-lines" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <div id="nav-overlay" class="nav-overlay" hidden></div>
+        <aside id="nav-drawer" class="nav-drawer" aria-label="Mobile menu" aria-hidden="true">
+            <div class="nav-drawer-header">
+                <span class="nav-drawer-title">Menu</span>
+                <button id="nav-close" class="nav-close" type="button" aria-label="Close menu">Close</button>
+            </div>
+            <div class="nav-drawer-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </aside>
+    </header>
+
+    <main id="content">
+        <section id="hero" class="section section-hero">
+            <div class="container hero-inner">
+                <p class="hero-name reveal"><span class="accent">Arjuna</span> Arrasyid</p>
+                <p class="eyebrow reveal">Full‑Stack Developer</p>
+                <h1 class="hero-title reveal">
+                    Building <span class="accent">fast</span>, <span class="accent">accessible</span> web products.
+                </h1>
+                <p class="hero-subtitle reveal">
+                    I turn complex requirements into clean interfaces and scalable systems—with a strong focus on performance and UX.
+                </p>
+
+                <div class="hero-actions reveal">
+                    <div class="magnetic-area">
+                        <a class="btn btn-primary" href="#projects">View projects</a>
+                    </div>
+                    <div class="magnetic-area">
+                        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+                    </div>
+                </div>
+
+                <div class="hero-badges reveal" aria-label="Key strengths">
+                    <span class="badge">Performance</span>
+                    <span class="badge">Accessibility</span>
+                    <span class="badge">Design Systems</span>
+                    <span class="badge">Backend APIs</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section section-about">
+            <div class="container about-grid">
+                <div class="about-card glass">
+                    <div class="about-icon" aria-hidden="true">
+                        <i data-lucide="code-2"></i>
+                    </div>
+                    <h2 class="section-title">About</h2>
+                    <p class="lead">
+                        I bridge backend logic and pixel‑level UI—shipping products that feel premium, load fast, and work for everyone.
+                    </p>
+                    <p class="muted">
+                        Comfortable across frontend, APIs, and data. I optimize for clarity, maintainability, and real user outcomes.
+                    </p>
+                </div>
+
+                <div class="about-highlights">
+                    <div class="highlight">
+                        <h3>Frontend</h3>
+                        <p class="muted">React, UI architecture, animations with restraint, accessibility.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Backend</h3>
+                        <p class="muted">Node.js, Python, PostgreSQL, API design, observability.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Quality</h3>
+                        <p class="muted">Perf budgets, clean UX writing, predictable states, edge‑case handling.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Delivery</h3>
+                        <p class="muted">Sensible trade‑offs, fast iterations, clear communication.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section section-projects">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">Featured work</h2>
+                    <p class="muted">Real products I’ve shipped—booking flows, travel/service landing pages, and conversion‑ready UX.</p>
+                </div>
+
+                <div class="project-grid">
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip">Villa booking</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Search • WhatsApp • Conversion</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Puncak Media Bogor</h3>
+                        <p class="muted">Reservasi villa dengan flow cepat: cek ketersediaan, listing villa, dan CTA yang jelas untuk closing.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://puncakmediabogor.com" target="_blank" rel="noopener noreferrer" aria-label="Open Puncak Media Bogor in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip">Villa booking</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Listings • Filters • Trust</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Ngevilla Yuk</h3>
+                        <p class="muted">Website reservasi villa dengan fokus pada discovery (browsing villa) dan UX yang simpel buat user non‑tech.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://ngevillayuk.com" target="_blank" rel="noopener noreferrer" aria-label="Open Ngevilla Yuk in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip">Villa booking</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">WhatsApp • Content • Speed</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Reservasi Villa Puncak</h3>
+                        <p class="muted">Landing + katalog villa untuk keluarga/kantor/komunitas, dengan CTA WhatsApp yang terasa natural.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://reservasivillapuncak.com" target="_blank" rel="noopener noreferrer" aria-label="Open Reservasi Villa Puncak in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip">Villa booking</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Availability • Capacity • Upsells</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Jejak Villa</h3>
+                        <p class="muted">Reservasi villa dengan input check‑in/out, kapasitas, rekomendasi villa, plus fasilitas (extra bed, floaties, CCTV).</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://jejakvilla.com" target="_blank" rel="noopener noreferrer" aria-label="Open Jejak Villa in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip chip-blue">Property</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Listings • Lead capture • CTA</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Kemang Indah</h3>
+                        <p class="muted">Website penjualan tanah dengan fokus trust, info yang mudah dipindai, dan CTA untuk generate leads.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://kemangindah.com" target="_blank" rel="noopener noreferrer" aria-label="Open Kemang Indah in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip chip-blue">Agency</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Landing • Services • Leads</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Bikin Web Di Kita Aja</h3>
+                        <p class="muted">Website agency pembuatan website—menjelaskan layanan, paket, dan CTA yang jelas untuk konsultasi/penawaran.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://bikinwebdikitaaja.com" target="_blank" rel="noopener noreferrer" aria-label="Open Bikin Web Di Kita Aja in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip chip-blue">Travel</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Driver • Booking • WhatsApp</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Abdul Somad Travel</h3>
+                        <p class="muted">Landing travel supir pribadi—menjelaskan layanan, area, dan CTA cepat untuk tanya harga & booking.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://abdulsomad-travel.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Abdul Somad Travel in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip chip-blue">Travel</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Private driver • Trust • CTA</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Abu Rayyan Travel</h3>
+                        <p class="muted">Website travel/driver pribadi dengan fokus trust, struktur info yang jelas, dan CTA yang gampang diakses.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://aburayyan-travel.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Abu Rayyan Travel in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip chip-purple">Invitation</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">One‑page • RSVP • Mobile‑first</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Ryan &amp; Fira Wedding</h3>
+                        <p class="muted">Undangan digital yang ringan, mobile‑first, dengan alur info acara yang enak dibaca dan CTA yang jelas.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://pernikahanryanfira.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Ryan and Fira wedding invitation in a new tab">Live</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass">
+                        <div class="project-top">
+                            <div class="project-top-row">
+                                <span class="chip chip-purple">OTA</span>
+                            </div>
+                            <div class="project-top-row">
+                                <span class="chip chip-quiet">Glamping • Booking flow • UI states</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Escape Plan</h3>
+                        <p class="muted">Third‑party OTA untuk pemesanan glamping—designed untuk flow browsing → detail → booking yang jelas.</p>
+                        <div class="project-actions">
+                            <a class="btn btn-small btn-secondary" href="https://escapeplanfrontend.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open Escape Plan in a new tab">Live</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section-contact">
+            <div class="container contact-card glass">
+                <div class="contact-copy">
+                    <h2 class="section-title">Let’s build something great</h2>
+                    <p class="muted">Open for freelance and full‑time roles. I reply fast and communicate clearly.</p>
+                </div>
+
+                <div class="contact-actions">
+                    <a class="btn btn-primary" href="mailto:arjunaarasyid62@gmail.com">Email me</a>
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/arjuna-arrasyid-2256b2208/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile in a new tab">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/arjuna15" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile in a new tab">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3"></path>
+                                <path d="M22 19.5v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://instagram.com/junancok" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram profile in a new tab">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37a4 4 0 1 1-7.44 2.25 4 4 0 0 1 7.44-2.25z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span class="muted">&copy; 2026 Arjuna's Portfolio</span>
+            <a class="to-top" href="#top">Back to top</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
     const hasFinePointer = window.matchMedia?.('(pointer: fine)')?.matches ?? false;
     const hasHover = window.matchMedia?.('(hover: hover)')?.matches ?? false;
+    const hasCoarsePointer = window.matchMedia?.('(pointer: coarse)')?.matches ?? false;
     const allowMotion = !prefersReducedMotion;
 
     // Icons (safe even if lucide fails to load)
@@ -111,7 +112,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Three.js background — gated for perf & accessibility
-    const allowThree = allowMotion && hasFinePointer && typeof window.THREE === 'object';
+    const supportsWebGL = () => {
+        try {
+            const testCanvas = document.createElement('canvas');
+            return Boolean(testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl'));
+        } catch (_) {
+            return false;
+        }
+    };
+
+    const deviceMemory = typeof navigator !== 'undefined' && 'deviceMemory' in navigator ? navigator.deviceMemory : 4;
+    const hardwareConcurrency = typeof navigator !== 'undefined' && 'hardwareConcurrency' in navigator ? navigator.hardwareConcurrency : 8;
+    const lowEndDevice = (deviceMemory && deviceMemory <= 2) || (hardwareConcurrency && hardwareConcurrency <= 4);
+
+    const allowThree = allowMotion && typeof window.THREE === 'object' && supportsWebGL();
     if (allowThree) {
         const canvas = document.getElementById('bg-canvas');
         if (!canvas) return;
@@ -119,7 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderer = new window.THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
         renderer.setClearAlpha(0);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        const pixelRatioCap = hasCoarsePointer ? 1.25 : 2;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelRatioCap));
 
         const scene = new window.THREE.Scene();
         const camera = new window.THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -129,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.add(mainGroup);
 
         const centerpiece = new window.THREE.Mesh(
-            new window.THREE.TorusKnotGeometry(1.2, 0.36, 150, 20),
+            new window.THREE.TorusKnotGeometry(1.2, 0.36, lowEndDevice ? 90 : 150, lowEndDevice ? 14 : 20),
             new window.THREE.MeshStandardMaterial({
                 color: 0x10b981,
                 wireframe: true,
@@ -141,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         mainGroup.add(centerpiece);
 
-        const particlesCount = 1500;
+        const particlesCount = lowEndDevice ? 700 : (hasCoarsePointer ? 1000 : 1500);
         const posArray = new Float32Array(particlesCount * 3);
         for (let i = 0; i < particlesCount * 3; i++) posArray[i] = (Math.random() - 0.5) * 20;
         const particlesGeometry = new window.THREE.BufferGeometry();
@@ -149,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const particlesMesh = new window.THREE.Points(
             particlesGeometry,
             new window.THREE.PointsMaterial({
-                size: 0.006,
+                size: hasCoarsePointer ? 0.007 : 0.006,
                 color: 0x10b981,
                 transparent: true,
                 opacity: 0.34,
@@ -165,20 +180,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let mouseX = 0;
         let mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5);
-            mouseY = (e.clientY / window.innerHeight - 0.5);
-        }, { passive: true });
+        // Input (desktop) + gentle auto-motion (mobile)
+        if (hasFinePointer) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth - 0.5);
+                mouseY = (e.clientY / window.innerHeight - 0.5);
+            }, { passive: true });
+        }
 
         let running = true;
         const animate = () => {
             if (!running) return;
             requestAnimationFrame(animate);
+            const t = performance.now() * 0.0002;
+            const autoY = Math.cos(t) * 0.10;
+            const autoX = Math.sin(t) * 0.08;
+
             centerpiece.rotation.y += 0.0045;
             centerpiece.rotation.x += 0.0018;
             particlesMesh.rotation.y += 0.001;
-            mainGroup.rotation.y += (mouseX * 0.35 - mainGroup.rotation.y) * 0.05;
-            mainGroup.rotation.x += (mouseY * 0.25 - mainGroup.rotation.x) * 0.05;
+            mainGroup.rotation.y += ((mouseX * 0.35 + autoY) - mainGroup.rotation.y) * 0.05;
+            mainGroup.rotation.x += ((mouseY * 0.25 + autoX) - mainGroup.rotation.x) * 0.05;
             renderer.render(scene, camera);
         };
         animate();
@@ -187,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelRatioCap));
         };
         window.addEventListener('resize', onResize, { passive: true });
 

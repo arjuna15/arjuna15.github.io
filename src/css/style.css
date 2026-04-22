@@ -540,7 +540,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .to-top:hover { color: rgba(255, 255, 255, 0.92); }
 
 /* Reveal baseline (only enabled when JS turns it on) */
-.reveal { opacity: 1; transform: none; }
+.reveal { opacity: 1 !important; transform: none; }
 body.reveal-on .reveal { opacity: 0; transform: translateY(14px); }
 body.reveal-on .reveal.is-visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
 body.reveal-on #hero .reveal { opacity: 1; transform: none; }

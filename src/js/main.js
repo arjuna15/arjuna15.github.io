@@ -228,12 +228,133 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // GSAP enhancements (optional)
     const hasGsap = allowMotion && window.gsap;
+    const hasScrollTrigger = hasGsap && window.ScrollTrigger;
+    if (hasScrollTrigger) {
+        try {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+        } catch (_) {}
+    }
+
     if (hasGsap) {
         try {
-            if (window.ScrollTrigger) window.gsap.registerPlugin(window.ScrollTrigger);
-            window.gsap.from('.hero-title', { opacity: 0, y: 16, duration: 0.9, ease: 'power3.out', delay: 0.05 });
-            window.gsap.from('.hero-subtitle', { opacity: 0, y: 12, duration: 0.8, ease: 'power3.out', delay: 0.12 });
-            window.gsap.from('.hero-actions', { opacity: 0, y: 10, duration: 0.7, ease: 'power3.out', delay: 0.18 });
+            // Header enter
+            window.gsap.from('.site-header', {
+                y: -10,
+                opacity: 0,
+                duration: 0.65,
+                ease: 'power3.out',
+                delay: 0.05,
+            });
+
+            // Hero (staggered)
+            window.gsap.from(
+                ['.hero-name', '.eyebrow', '.hero-title', '.hero-subtitle', '.hero-actions', '.hero-badges'],
+                {
+                    opacity: 0,
+                    y: 16,
+                    duration: 0.9,
+                    ease: 'power3.out',
+                    stagger: 0.08,
+                    delay: 0.08,
+                    clearProps: 'transform',
+                }
+            );
+
+            // Subtle idle motion
+            window.gsap.to('.about-icon', {
+                y: -6,
+                duration: 2.4,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1,
+            });
+            window.gsap.to('.badge', {
+                y: -4,
+                duration: 2.2,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1,
+                stagger: 0.15,
+            });
+        } catch (_) {}
+    }
+
+    if (hasScrollTrigger) {
+        try {
+            // Section titles
+            window.gsap.utils.toArray('.section-title').forEach((title) => {
+                window.gsap.from(title, {
+                    scrollTrigger: {
+                        trigger: title,
+                        start: 'top 86%',
+                        toggleActions: 'play none none reverse',
+                    },
+                    opacity: 0,
+                    y: 18,
+                    duration: 0.75,
+                    ease: 'power3.out',
+                });
+            });
+
+            // About blocks
+            window.gsap.from('.about-card', {
+                scrollTrigger: { trigger: '.section-about', start: 'top 72%' },
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                ease: 'power3.out',
+            });
+            window.gsap.from('.highlight', {
+                scrollTrigger: { trigger: '.about-highlights', start: 'top 80%' },
+                opacity: 0,
+                y: 18,
+                duration: 0.7,
+                ease: 'power3.out',
+                stagger: 0.12,
+            });
+
+            // Projects (batch for smoother + more "alive")
+            const cards = window.gsap.utils.toArray('.project-card');
+            if (window.ScrollTrigger.batch) {
+                window.ScrollTrigger.batch(cards, {
+                    start: 'top 85%',
+                    onEnter: (batch) =>
+                        window.gsap.fromTo(
+                            batch,
+                            { opacity: 0, y: 22, scale: 0.98 },
+                            { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'power3.out', stagger: 0.08, clearProps: 'transform' }
+                        ),
+                });
+            } else {
+                cards.forEach((card) => {
+                    window.gsap.from(card, {
+                        scrollTrigger: { trigger: card, start: 'top 88%' },
+                        opacity: 0,
+                        y: 22,
+                        scale: 0.98,
+                        duration: 0.7,
+                        ease: 'power3.out',
+                        clearProps: 'transform',
+                    });
+                });
+            }
+
+            // Contact
+            window.gsap.from('.contact-card', {
+                scrollTrigger: { trigger: '.section-contact', start: 'top 78%' },
+                opacity: 0,
+                y: 22,
+                duration: 0.75,
+                ease: 'power3.out',
+            });
+            window.gsap.from('.social a', {
+                scrollTrigger: { trigger: '.section-contact', start: 'top 72%' },
+                opacity: 0,
+                y: 10,
+                duration: 0.55,
+                ease: 'power3.out',
+                stagger: 0.09,
+            });
         } catch (_) {}
     }
 });

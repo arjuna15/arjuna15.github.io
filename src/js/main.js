@@ -44,7 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Reveal (no-lib baseline)
-    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+    // Make hero content visible immediately (important above-the-fold content).
+    const heroRevealEls = Array.from(document.querySelectorAll('#hero .reveal'));
+    heroRevealEls.forEach((el) => el.classList.add('is-visible'));
+
+    const revealEls = Array.from(document.querySelectorAll('.reveal')).filter((el) => !el.closest('#hero'));
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {

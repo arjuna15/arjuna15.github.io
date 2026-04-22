@@ -8,6 +8,58 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enable reveal styles only when JS is running (prevents hidden content if JS/CDNs fail).
     document.body.classList.add('reveal-on');
 
+    // Parallax starfield (very light) — respects reduced-motion automatically via allowMotion.
+    const parallaxBg = document.getElementById('parallax-bg');
+    if (parallaxBg) {
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        let latestScrollY = window.scrollY || 0;
+        let rafId = 0;
+
+        const updateParallax = () => {
+            rafId = requestAnimationFrame(updateParallax);
+            if (!allowMotion) return;
+
+            currentX += (targetX - currentX) * 0.08;
+            currentY += (targetY - currentY) * 0.08;
+
+            const scrollShift = latestScrollY * 0.06;
+            parallaxBg.style.setProperty('--pax', `${currentX}px`);
+            parallaxBg.style.setProperty('--pay', `${currentY}px`);
+            parallaxBg.style.setProperty('--ps', `${scrollShift}px`);
+        };
+
+        const onPointerMove = (e) => {
+            if (!allowMotion) return;
+            const x = (e.clientX / window.innerWidth - 0.5);
+            const y = (e.clientY / window.innerHeight - 0.5);
+            targetX = x * 22;
+            targetY = y * 18;
+        };
+
+        const onScroll = () => {
+            latestScrollY = window.scrollY || 0;
+        };
+
+        if (allowMotion) {
+            if (hasFinePointer) document.addEventListener('mousemove', onPointerMove, { passive: true });
+            window.addEventListener('scroll', onScroll, { passive: true });
+        } else {
+            parallaxBg.style.setProperty('--pax', `0px`);
+            parallaxBg.style.setProperty('--pay', `0px`);
+            parallaxBg.style.setProperty('--ps', `0px`);
+        }
+
+        updateParallax();
+
+        // Cleanup hook (in case this code is ever embedded in an SPA)
+        window.addEventListener('beforeunload', () => {
+            if (rafId) cancelAnimationFrame(rafId);
+        }, { once: true });
+    }
+
     // Icons (safe even if lucide fails to load)
     try {
         window.lucide?.createIcons?.();

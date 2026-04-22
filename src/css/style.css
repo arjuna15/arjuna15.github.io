@@ -98,6 +98,50 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     opacity: 0.9;
 }
 
+/* Parallax starfield (lightweight) */
+.parallax-bg {
+    position: fixed;
+    inset: -25%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    transform: translate3d(var(--pax, 0px), calc(var(--pay, 0px) - var(--ps, 0px)), 0) scale(1.05);
+    filter: saturate(1.05);
+    will-change: transform;
+}
+.parallax-bg::before,
+.parallax-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: repeat;
+    opacity: 0.9;
+}
+.parallax-bg::before {
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.55) 1px, transparent 1px),
+        radial-gradient(rgba(16, 185, 129, 0.25) 1px, transparent 1px);
+    background-size: 180px 180px, 320px 320px;
+    background-position: 0 0, 80px 140px;
+    transform: translate3d(calc(var(--pax, 0px) * 0.55), calc((var(--pay, 0px) - var(--ps, 0px)) * 0.55), 0);
+    animation: twinkle 6s ease-in-out infinite alternate;
+}
+.parallax-bg::after {
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.18) 2px, transparent 2px);
+    background-size: 260px 260px, 520px 520px;
+    background-position: 40px 80px, 0 0;
+    transform: translate3d(calc(var(--pax, 0px) * 0.28), calc((var(--pay, 0px) - var(--ps, 0px)) * 0.28), 0);
+    animation: twinkle 8s ease-in-out infinite alternate;
+    opacity: 0.65;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.55; }
+    to { opacity: 0.95; }
+}
+
 /* Header */
 .site-header {
     position: fixed;
@@ -549,4 +593,7 @@ body.has-custom-cursor .cursor-dot { display: block; }
     .btn { transition: none; }
     .project-media img { transition: none; transform: none; }
     .grain { opacity: 0.03; }
+    .parallax-bg { transform: none; }
+    .parallax-bg::before,
+    .parallax-bg::after { animation: none; }
 }

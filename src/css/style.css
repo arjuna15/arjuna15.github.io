@@ -91,7 +91,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .bg-canvas {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -2;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -102,9 +102,9 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .parallax-bg {
     position: fixed;
     inset: -25%;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.75;
     transform: translate3d(var(--pax, 0px), calc(var(--pay, 0px) - var(--ps, 0px)), 0) scale(1.05);
     filter: saturate(1.05);
     will-change: transform;
@@ -119,22 +119,25 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 }
 .parallax-bg::before {
     background-image:
-        radial-gradient(rgba(255, 255, 255, 0.55) 1px, transparent 1px),
-        radial-gradient(rgba(16, 185, 129, 0.25) 1px, transparent 1px);
-    background-size: 180px 180px, 320px 320px;
-    background-position: 0 0, 80px 140px;
+        radial-gradient(rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+        radial-gradient(rgba(16, 185, 129, 0.55) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.25) 2px, transparent 2px);
+    background-size: 160px 160px, 260px 260px, 520px 520px;
+    background-position: 0 0, 80px 140px, 120px 40px;
     transform: translate3d(calc(var(--pax, 0px) * 0.55), calc((var(--pay, 0px) - var(--ps, 0px)) * 0.55), 0);
-    animation: twinkle 6s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.10));
+    animation: twinkle 5.5s ease-in-out infinite alternate;
 }
 .parallax-bg::after {
     background-image:
-        radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px),
-        radial-gradient(rgba(255, 255, 255, 0.18) 2px, transparent 2px);
-    background-size: 260px 260px, 520px 520px;
+        radial-gradient(rgba(255, 255, 255, 0.55) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.22) 2px, transparent 2px);
+    background-size: 220px 220px, 460px 460px;
     background-position: 40px 80px, 0 0;
     transform: translate3d(calc(var(--pax, 0px) * 0.28), calc((var(--pay, 0px) - var(--ps, 0px)) * 0.28), 0);
-    animation: twinkle 8s ease-in-out infinite alternate;
-    opacity: 0.65;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.10));
+    animation: twinkle 7.5s ease-in-out infinite alternate;
+    opacity: 0.85;
 }
 
 @keyframes twinkle {
@@ -540,6 +543,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .reveal { opacity: 1; transform: none; }
 body.reveal-on .reveal { opacity: 0; transform: translateY(14px); }
 body.reveal-on .reveal.is-visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+body.reveal-on #hero .reveal { opacity: 1; transform: none; }
 
 /* Cursor (enabled via JS) */
 .cursor,

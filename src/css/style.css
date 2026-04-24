@@ -146,6 +146,27 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     to { opacity: 0.95; }
 }
 
+/* Batik Megamendung overlay (subtle, space-themed) */
+.batik-bg {
+    position: fixed;
+    inset: -10%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.11;
+    mix-blend-mode: soft-light;
+    transform: translate3d(calc(var(--pax, 0px) * 0.18), calc((var(--pay, 0px) - var(--ps, 0px)) * 0.18), 0) rotate(-6deg) scale(1.05);
+    will-change: transform;
+    background-repeat: repeat;
+    background-size: 760px 460px;
+    background-position: 0 0;
+    filter: blur(0.85px) saturate(1.05) contrast(1.02);
+    mask-image: radial-gradient(900px 520px at 18% 22%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%),
+                radial-gradient(860px 520px at 82% 78%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 72%);
+    -webkit-mask-image: radial-gradient(900px 520px at 18% 22%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%),
+                        radial-gradient(860px 520px at 82% 78%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 72%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='460' viewBox='0 0 760 460'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M30 320c70-110 170-110 240 0s170 110 240 0 170-110 220-20' stroke='%23ffffff' stroke-width='18' stroke-opacity='.08'/%3E%3Cpath d='M70 320c52-82 126-82 178 0s126 82 178 0 126-82 160-14' stroke='%2310b981' stroke-width='14' stroke-opacity='.08'/%3E%3Cpath d='M120 164c58-92 142-92 200 0s142 92 200 0 142-92 188-18' stroke='%23ffffff' stroke-width='16' stroke-opacity='.06'/%3E%3Cpath d='M150 164c40-62 98-62 138 0s98 62 138 0 98-62 130-12' stroke='%2310b981' stroke-width='12' stroke-opacity='.06'/%3E%3C/g%3E%3C/svg%3E");
+}
+
 /* Header */
 .site-header {
     position: fixed;
@@ -605,4 +626,5 @@ body.has-custom-cursor .cursor-dot { display: block; }
     .parallax-bg { transform: none; }
     .parallax-bg::before,
     .parallax-bg::after { animation: none; }
+    .batik-bg { transform: none; }
 }

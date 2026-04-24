@@ -99,6 +99,16 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     opacity: 0.9;
 }
 
+/* Constellation overlay */
+.constellation-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
+    mix-blend-mode: screen;
+}
+
 /* Parallax starfield (lightweight) */
 .parallax-bg {
     position: fixed;
@@ -660,4 +670,5 @@ body.has-custom-cursor .cursor-dot { display: block; }
     .parallax-bg::before,
     .parallax-bg::after { animation: none; }
     .batik-bg { transform: none; }
+    .constellation-canvas { opacity: 0.55; }
 }

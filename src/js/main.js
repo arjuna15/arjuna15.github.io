@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Parallax starfield (very light) — respects reduced-motion automatically via allowMotion.
     const parallaxBg = document.getElementById('parallax-bg');
+    const constellationCanvas = document.getElementById('constellation-canvas');
     if (parallaxBg) {
         let targetX = 0;
         let targetY = 0;
@@ -17,6 +18,121 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentY = 0;
         let latestScrollY = window.scrollY || 0;
         let rafId = 0;
+        let constellation = null;
+
+        const setupConstellation = () => {
+            if (!constellationCanvas) return null;
+            const ctx = constellationCanvas.getContext?.('2d');
+            if (!ctx) return null;
+
+            // Normalized constellation points (0..1) + edges (pairs of indices).
+            // Intentionally "Orion-like" but abstract enough to fit the theme.
+            const points = [
+                { x: 0.22, y: 0.28, s: 1.35 },
+                { x: 0.31, y: 0.22, s: 1.0 },
+                { x: 0.39, y: 0.30, s: 1.15 },
+                { x: 0.33, y: 0.37, s: 1.8 },  // bright
+                { x: 0.42, y: 0.42, s: 1.1 },
+                { x: 0.52, y: 0.36, s: 1.45 },
+                { x: 0.58, y: 0.28, s: 1.05 },
+                { x: 0.64, y: 0.35, s: 1.9 },  // bright
+                { x: 0.72, y: 0.46, s: 1.15 },
+                { x: 0.70, y: 0.60, s: 1.0 },
+                { x: 0.56, y: 0.64, s: 1.2 },
+                { x: 0.44, y: 0.58, s: 1.05 },
+                { x: 0.30, y: 0.62, s: 1.15 },
+            ];
+            const edges = [
+                [0, 1], [1, 2], [2, 3], [3, 4],
+                [2, 5], [5, 6], [5, 7], [7, 8],
+                [8, 9], [9, 10], [10, 11], [11, 12],
+                [3, 11],
+            ];
+
+            const state = {
+                ctx,
+                points: points.map((p, i) => ({
+                    ...p,
+                    phase: (i * 0.9) % (Math.PI * 2),
+                })),
+                edges,
+                width: 0,
+                height: 0,
+                dpr: 1,
+            };
+
+            const resize = () => {
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                state.dpr = dpr;
+                state.width = Math.max(1, Math.floor(window.innerWidth));
+                state.height = Math.max(1, Math.floor(window.innerHeight));
+                constellationCanvas.width = Math.floor(state.width * dpr);
+                constellationCanvas.height = Math.floor(state.height * dpr);
+                constellationCanvas.style.width = `${state.width}px`;
+                constellationCanvas.style.height = `${state.height}px`;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            };
+
+            resize();
+            window.addEventListener('resize', resize, { passive: true });
+
+            return state;
+        };
+
+        constellation = setupConstellation();
+
+        const drawConstellation = (timeMs) => {
+            if (!constellation) return;
+            const { ctx, width, height, points, edges } = constellation;
+            ctx.clearRect(0, 0, width, height);
+
+            // Parallax offsets (subtle)
+            const ox = currentX * 0.6;
+            const oy = currentY * 0.5 - latestScrollY * 0.03;
+
+            // Line styling
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.16)';
+
+            // Glow lines
+            ctx.save();
+            ctx.shadowColor = 'rgba(16, 185, 129, 0.18)';
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            edges.forEach(([a, b]) => {
+                const pa = points[a];
+                const pb = points[b];
+                const ax = pa.x * width + ox;
+                const ay = pa.y * height + oy;
+                const bx = pb.x * width + ox;
+                const by = pb.y * height + oy;
+                ctx.moveTo(ax, ay);
+                ctx.lineTo(bx, by);
+            });
+            ctx.stroke();
+            ctx.restore();
+
+            // Nodes
+            const t = timeMs * 0.001;
+            points.forEach((p) => {
+                const tw = allowMotion ? (0.55 + 0.45 * Math.sin(t * 1.6 + p.phase)) : 0.85;
+                const r = (2.0 + p.s * 1.35) * tw;
+                const x = p.x * width + ox;
+                const y = p.y * height + oy;
+
+                // outer glow
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(16, 185, 129, ${0.12 * p.s})`;
+                ctx.arc(x, y, r * 2.2, 0, Math.PI * 2);
+                ctx.fill();
+
+                // core
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(255, 255, 255, ${0.50 + 0.25 * p.s})`;
+                ctx.arc(x, y, r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        };
 
         const updateParallax = () => {
             rafId = requestAnimationFrame(updateParallax);
@@ -29,6 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxBg.style.setProperty('--pax', `${currentX}px`);
             parallaxBg.style.setProperty('--pay', `${currentY}px`);
             parallaxBg.style.setProperty('--ps', `${scrollShift}px`);
+
+            // Draw constellation on the same tick (keeps it aligned with parallax vars).
+            drawConstellation(performance.now());
         };
 
         const onPointerMove = (e) => {
@@ -50,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxBg.style.setProperty('--pax', `0px`);
             parallaxBg.style.setProperty('--pay', `0px`);
             parallaxBg.style.setProperty('--ps', `0px`);
+            drawConstellation(performance.now());
         }
 
         updateParallax();
@@ -205,11 +325,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerpiece = new window.THREE.Mesh(
             new window.THREE.TorusKnotGeometry(1.2, 0.36, lowEndDevice ? 90 : 150, lowEndDevice ? 14 : 20),
             new window.THREE.MeshStandardMaterial({
-                color: 0x10b981,
+                color: 0xD4AF37,
                 wireframe: true,
                 transparent: true,
                 opacity: 0.28,
-                emissive: 0x10b981,
+                emissive: 0xD4AF37,
                 emissiveIntensity: 0.55,
             })
         );
@@ -224,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
             particlesGeometry,
             new window.THREE.PointsMaterial({
                 size: hasCoarsePointer ? 0.007 : 0.006,
-                color: 0x10b981,
+                color: 0xD4AF37,
                 transparent: true,
                 opacity: 0.34,
                 blending: window.THREE.AdditiveBlending,
@@ -232,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         mainGroup.add(particlesMesh);
 
-        const pointLight = new window.THREE.PointLight(0x10b981, 10);
+        const pointLight = new window.THREE.PointLight(0xD4AF37, 10);
         pointLight.position.set(2, 3, 4);
         scene.add(pointLight);
         scene.add(new window.THREE.AmbientLight(0xffffff, 0.08));

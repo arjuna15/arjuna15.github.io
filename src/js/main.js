@@ -25,28 +25,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const ctx = constellationCanvas.getContext?.('2d');
             if (!ctx) return null;
 
-            // Normalized constellation points (0..1) + edges (pairs of indices).
-            // Intentionally "Orion-like" but abstract enough to fit the theme.
+            // Pisces-inspired constellation (two "fish" loops connected by a cord).
+            // Normalized points (0..1) + edges (pairs of indices).
             const points = [
-                { x: 0.22, y: 0.28, s: 1.35 },
-                { x: 0.31, y: 0.22, s: 1.0 },
-                { x: 0.39, y: 0.30, s: 1.15 },
-                { x: 0.33, y: 0.37, s: 1.8 },  // bright
-                { x: 0.42, y: 0.42, s: 1.1 },
-                { x: 0.52, y: 0.36, s: 1.45 },
-                { x: 0.58, y: 0.28, s: 1.05 },
-                { x: 0.64, y: 0.35, s: 1.9 },  // bright
-                { x: 0.72, y: 0.46, s: 1.15 },
-                { x: 0.70, y: 0.60, s: 1.0 },
-                { x: 0.56, y: 0.64, s: 1.2 },
-                { x: 0.44, y: 0.58, s: 1.05 },
-                { x: 0.30, y: 0.62, s: 1.15 },
+                // Left fish loop (0-4)
+                { x: 0.24, y: 0.54, s: 1.55 }, // bright
+                { x: 0.18, y: 0.46, s: 1.05 },
+                { x: 0.22, y: 0.38, s: 1.15 },
+                { x: 0.30, y: 0.40, s: 1.0 },
+                { x: 0.32, y: 0.50, s: 1.2 },
+
+                // Right fish loop (5-9)
+                { x: 0.74, y: 0.30, s: 1.65 }, // bright
+                { x: 0.82, y: 0.36, s: 1.05 },
+                { x: 0.80, y: 0.46, s: 1.1 },
+                { x: 0.70, y: 0.44, s: 1.0 },
+                { x: 0.68, y: 0.34, s: 1.25 },
+
+                // Cord / connector (10-12)
+                { x: 0.40, y: 0.46, s: 0.95 },
+                { x: 0.52, y: 0.42, s: 1.05 },
+                { x: 0.62, y: 0.38, s: 0.95 },
             ];
+
             const edges = [
-                [0, 1], [1, 2], [2, 3], [3, 4],
-                [2, 5], [5, 6], [5, 7], [7, 8],
-                [8, 9], [9, 10], [10, 11], [11, 12],
-                [3, 11],
+                // Left loop
+                [0, 1], [1, 2], [2, 3], [3, 4], [4, 0],
+                // Right loop
+                [5, 6], [6, 7], [7, 8], [8, 9], [9, 5],
+                // Cord
+                [3, 10], [10, 11], [11, 12], [12, 9],
             ];
 
             const state = {
@@ -90,13 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const ox = currentX * 0.6;
             const oy = currentY * 0.5 - latestScrollY * 0.03;
 
-            // Line styling
+            // Line styling (lean emerald so it matches the 3D background)
             ctx.lineWidth = 1;
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.16)';
+            ctx.strokeStyle = 'rgba(16, 185, 129, 0.22)';
 
             // Glow lines
             ctx.save();
-            ctx.shadowColor = 'rgba(16, 185, 129, 0.18)';
+            ctx.shadowColor = 'rgba(16, 185, 129, 0.22)';
             ctx.shadowBlur = 10;
             ctx.beginPath();
             edges.forEach(([a, b]) => {

@@ -103,7 +103,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .constellation-canvas {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     opacity: 0.85;
     mix-blend-mode: screen;
@@ -113,7 +113,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .parallax-bg {
     position: fixed;
     inset: -25%;
-    z-index: -1;
+    z-index: -4;
     pointer-events: none;
     opacity: 0.75;
     transform: translate3d(var(--pax, 0px), calc(var(--pay, 0px) - var(--ps, 0px)), 0) scale(1.05);
@@ -160,7 +160,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .batik-bg {
     position: fixed;
     inset: -10%;
-    z-index: 0;
+    z-index: -3;
     pointer-events: none;
     opacity: 0.11;
     mix-blend-mode: soft-light;

@@ -536,6 +536,11 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     gap: 16px;
 }
 .contact-actions { display: grid; gap: 12px; }
+.contact-footer {
+    padding-top: 14px;
+    margin-top: 2px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
 .social { display: flex; flex-wrap: wrap; gap: 14px; color: rgba(255, 255, 255, 0.68); }
 .social a {
     display: inline-flex;
@@ -552,6 +557,17 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     opacity: 0.9;
 }
 .social a:hover { border-color: rgba(16, 185, 129, 0.28); }
+
+/* Contact footer: single-row social links */
+.contact-footer .social {
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.contact-footer .social::-webkit-scrollbar { display: none; }
+.contact-footer .social a { white-space: nowrap; }
 
 /* Footer */
 .site-footer {

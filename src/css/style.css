@@ -540,6 +540,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     padding-top: 14px;
     margin-top: 2px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+    grid-column: 1 / -1;
 }
 .social { display: flex; flex-wrap: wrap; gap: 14px; color: rgba(255, 255, 255, 0.68); }
 .social a {
@@ -565,6 +566,8 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    width: 100%;
+    justify-content: center;
 }
 .contact-footer .social::-webkit-scrollbar { display: none; }
 .contact-footer .social a { white-space: nowrap; }

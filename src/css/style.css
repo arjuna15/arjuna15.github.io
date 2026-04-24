@@ -572,6 +572,20 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 .contact-footer .social::-webkit-scrollbar { display: none; }
 .contact-footer .social a { white-space: nowrap; }
 
+@media (max-width: 520px) {
+    .contact-footer .social {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        justify-content: center;
+    }
+    .contact-footer .social a { padding: 8px 10px; }
+}
+
+@media (max-width: 380px) {
+    .contact-footer .social a span { display: none; }
+    .contact-footer .social a { gap: 0; }
+}
+
 /* Footer */
 .site-footer {
     position: relative;

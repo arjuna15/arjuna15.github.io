@@ -16,7 +16,8 @@ function App() {
       AOS.init();
     }, []);
   return (
-    <div className="px-6 lg:px-20 xl:px-36 bg-dark-500">
+    <div className="px-6 lg:px-20 xl:px-36 bg-dark-500 min-h-screen relative overflow-x-hidden">
+      <div className="mega-mendung-overlay"></div>
       <Navbar />
       <Hiro />
       <Skills />

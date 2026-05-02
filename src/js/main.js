@@ -333,11 +333,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerpiece = new window.THREE.Mesh(
             new window.THREE.TorusKnotGeometry(1.2, 0.36, lowEndDevice ? 90 : 150, lowEndDevice ? 14 : 20),
             new window.THREE.MeshStandardMaterial({
-                color: 0xD4AF37,
+                color: 0x10B981,
                 wireframe: true,
                 transparent: true,
                 opacity: 0.28,
-                emissive: 0xD4AF37,
+                emissive: 0x10B981,
                 emissiveIntensity: 0.55,
             })
         );

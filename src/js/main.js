@@ -537,9 +537,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const highlightBottomNav = () => {
         let scrollY = window.pageYOffset;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        
+        // If at the very bottom, force Contact to be active
+        if (scrollY + clientHeight >= scrollHeight - 20) {
+            bottomNavItems.forEach((item, idx) => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#contact') {
+                    item.classList.add('active');
+                    updateIndicator(idx);
+                }
+            });
+            return;
+        }
+
         sections.forEach((current, index) => {
             const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 150;
+            const sectionTop = current.offsetTop - 200; // Increased offset for better early detection
             const sectionId = current.getAttribute('id');
 
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {

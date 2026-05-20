@@ -246,24 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
         revealEls.forEach((el) => el.classList.add('is-visible'));
     }
 
-    // Smooth scroll (Lenis) — skip on touch/coarse and reduced motion
-    const allowLenis = allowMotion && hasFinePointer && typeof window.Lenis === 'function';
-    if (allowLenis) {
-        const lenis = new window.Lenis({
-            duration: 1.05,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true,
-            wheelMultiplier: 1,
-            smoothTouch: false,
-        });
-
-        const raf = (time) => {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        };
-        requestAnimationFrame(raf);
-    }
-
     // Custom cursor + magnetic (only on fine pointer + hover)
     const cursor = document.getElementById('cursor');
     const cursorDot = document.getElementById('cursor-dot');

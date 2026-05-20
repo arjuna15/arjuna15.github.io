@@ -757,14 +757,16 @@ body.has-custom-cursor .cursor-dot { display: block; }
 }
 
 @media (min-width: 900px) {
+    .site-header { display: block; }
+    .mobile-bottom-nav { display: none !important; }
     .site-nav { display: flex; }
-...
     .nav-toggle { display: none; }
     .about-grid { grid-template-columns: 1.1fr 0.9fr; gap: 18px; align-items: start; }
     .about-card { padding: 26px; }
     .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
     .contact-card { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
     .contact-actions { justify-items: end; }
+}
 }
 
 @media (prefers-reduced-motion: reduce) {

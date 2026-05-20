@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const renderer = new window.THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
         renderer.setClearAlpha(0);
         renderer.setSize(window.innerWidth, window.innerHeight);
-        const pixelRatioCap = hasCoarsePointer ? 1.25 : 2;
+        const pixelRatioCap = 1.5;
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelRatioCap));
 
         const scene = new window.THREE.Scene();
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.add(mainGroup);
 
         const centerpiece = new window.THREE.Mesh(
-            new window.THREE.TorusKnotGeometry(1.2, 0.36, lowEndDevice ? 90 : 150, lowEndDevice ? 14 : 20),
+            new window.THREE.TorusKnotGeometry(1.2, 0.36, lowEndDevice ? 60 : 100, lowEndDevice ? 10 : 16),
             new window.THREE.MeshStandardMaterial({
                 color: 0x10B981,
                 wireframe: true,
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         mainGroup.add(centerpiece);
 
-        const particlesCount = lowEndDevice ? 700 : (hasCoarsePointer ? 1000 : 1500);
+        const particlesCount = lowEndDevice ? 400 : (hasCoarsePointer ? 600 : 800);
         const posArray = new Float32Array(particlesCount * 3);
         for (let i = 0; i < particlesCount * 3; i++) posArray[i] = (Math.random() - 0.5) * 20;
         const particlesGeometry = new window.THREE.BufferGeometry();

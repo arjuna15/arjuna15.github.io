@@ -58,8 +58,7 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
     border: 1px solid var(--border);
     box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    /* Backdrop filter removed for performance, kept only on header/nav */
 }
 
 /* Skip link */

@@ -318,9 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 color: 0x10B981,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.28,
+                opacity: 0.12,
                 emissive: 0x10B981,
-                emissiveIntensity: 0.55,
+                emissiveIntensity: 0.45,
             })
         );
         mainGroup.add(centerpiece);
@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 size: hasCoarsePointer ? 0.007 : 0.006,
                 color: 0xD4AF37,
                 transparent: true,
-                opacity: 0.34,
+                opacity: 0.20,
                 blending: window.THREE.AdditiveBlending,
             })
         );

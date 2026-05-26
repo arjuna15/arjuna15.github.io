@@ -490,18 +490,30 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
 /* Featured project card specific */
 .project-card.featured {
     grid-column: 1 / -1;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 24px;
+    padding: 20px;
 }
 
 @media (min-width: 900px) {
     .project-card.featured {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
+        display: grid;
+        grid-template-columns: 45% 1fr;
+        align-items: stretch;
+        gap: 36px;
+        padding: 32px;
     }
     .project-card.featured .project-media {
         margin-bottom: 0;
         height: 100%;
+        aspect-ratio: auto;
+        min-height: 400px;
+    }
+    .project-card.featured .project-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
 

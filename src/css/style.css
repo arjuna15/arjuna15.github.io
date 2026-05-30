@@ -497,25 +497,32 @@ a:focus-visible, button:focus-visible { outline: none; box-shadow: var(--ring); 
     border-color: rgba(16, 185, 129, 0.2);
 }
 
+.project-card.featured .project-media {
+    aspect-ratio: 16 / 9; /* More cinematic for featured projects */
+}
+
 @media (min-width: 900px) {
     .project-card.featured {
         display: grid;
-        grid-template-columns: 46% 1fr;
-        align-items: stretch;
-        gap: 48px;
-        padding: 40px;
+        grid-template-columns: 40% 1fr;
+        align-items: center;
+        gap: 32px;
+        padding: 32px;
     }
     .project-card.featured .project-media {
         margin-bottom: 0;
-        height: 100%;
-        aspect-ratio: auto;
-        min-height: 440px;
+        height: auto;
+        aspect-ratio: 16 / 10;
+        width: 100%;
+        max-width: 480px;
         border-radius: 20px;
+        flex-shrink: 0;
     }
     .project-card.featured .project-content {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        min-width: 0; /* Prevents flex items from overflowing */
     }
     .project-card.featured .project-title {
         font-size: 1.8rem;

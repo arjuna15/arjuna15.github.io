@@ -82,10 +82,17 @@ body {
         #000000 15px,
         #000000 30px
     );
-    border-top: var(--border-width) solid #000;
-    border-bottom: var(--border-width) solid #000;
+    background-size: 42px 42px;
+    border-top: var(--border-width) solid var(--border-color);
+    border-bottom: var(--border-width) solid var(--border-color);
     width: 100%;
     margin: 20px 0;
+    animation: move-stripes 1.2s linear infinite;
+}
+
+@keyframes move-stripes {
+    from { background-position: 0 0; }
+    to { background-position: 42px 0; }
 }
 
 /* Base custom selection */

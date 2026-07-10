@@ -661,15 +661,15 @@ body {
     background: var(--neo-pink);
     color: var(--text-dark);
     border: var(--border-width) solid var(--border-color);
-    padding: 40px;
+    padding: clamp(24px, 5vw, 40px);
     box-shadow: var(--shadow-offset-lg) var(--shadow-offset-lg) 0px var(--border-color);
     display: grid;
-    gap: 24px;
+    gap: 32px;
 }
 
 .contact-card h2.section-title {
     color: var(--text-dark);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .contact-card .muted {
@@ -678,57 +678,103 @@ body {
     font-weight: 500;
 }
 
-.contact-actions {
-    display: grid;
-    gap: 16px;
-}
-
-.contact-actions .btn {
-    background: var(--neo-yellow);
-    color: var(--text-dark);
-}
-
-.contact-actions .btn:hover {
-    background: #ffffff;
-}
-
-.contact-footer {
-    padding-top: 24px;
-    border-top: var(--border-width) solid var(--border-color);
-    margin-top: 8px;
-}
-
-.social {
+.contact-left {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    flex-direction: column;
     justify-content: center;
 }
 
-.social a {
+.social-links-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.social-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     background: #ffffff;
     color: var(--text-dark);
     border: var(--border-width) solid var(--border-color);
-    box-shadow: 3px 3px 0px var(--border-color);
+    box-shadow: 4px 4px 0px var(--border-color);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.9rem;
-    transition: all 0.1s;
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.social a svg {
-    width: 20px;
-    height: 20px;
+.social-badge i {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5px;
 }
 
-.social a:hover {
+.social-badge:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--border-color);
+}
+
+.social-badge.linkedin:hover { background: var(--neo-cyan); }
+.social-badge.github:hover { background: #ffffff; }
+.social-badge.instagram:hover { background: var(--neo-purple); color: #ffffff; }
+.social-badge.whatsapp:hover { background: var(--neo-green); }
+
+.contact-right {
+    display: flex;
+    align-self: center;
+    width: 100%;
+}
+
+.contact-form {
+    display: grid;
+    gap: 16px;
+    background: #ffffff;
+    border: var(--border-width) solid var(--border-color);
+    padding: 24px;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #000000;
+}
+
+.form-group input,
+.form-group textarea {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 12px;
+    border: var(--border-width) solid var(--border-color);
+    background: #ffffff;
+    color: #000000;
+    outline: none;
+    transition: all 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background: var(--neo-yellow);
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px var(--border-color);
-    background: var(--neo-cyan);
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.form-submit-btn {
+    margin-top: 8px;
+    width: 100%;
 }
 
 /* Footer */

@@ -351,6 +351,7 @@ body {
     box-shadow: 3px 3px 0px var(--border-color);
     font-size: 0.9rem;
     transition: transform 0.15s;
+    white-space: nowrap;
 }
 
 .badge:nth-child(even) { transform: rotate(1deg); }

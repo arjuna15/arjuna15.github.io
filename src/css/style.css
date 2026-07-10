@@ -603,10 +603,11 @@ body::after {
     text-transform: uppercase;
     margin-bottom: 10px;
     letter-spacing: -0.02em;
+    line-height: 1.1;
 }
 
 .project-card:not(.featured) .project-title {
-    min-height: 5.2rem;
+    min-height: 5.8rem;
     display: flex;
     align-items: center;
 }

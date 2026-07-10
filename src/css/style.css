@@ -368,7 +368,7 @@ body {
 
 .btn-primary {
     background: var(--neo-green);
-    color: var(--text-dark);
+    color: #000000;
 }
 
 .btn-secondary {
@@ -421,9 +421,9 @@ body {
     display: grid;
     place-items: center;
     border: var(--border-width) solid var(--border-color);
-    background: #ffffff;
+    background: var(--neo-yellow);
     margin-bottom: 24px;
-    color: var(--text-dark);
+    color: #000000;
     box-shadow: 4px 4px 0px var(--border-color);
 }
 .about-icon svg { width: 28px; height: 28px; }
@@ -442,7 +442,7 @@ body {
 }
 
 .about-card .lead .accent {
-    color: var(--text-dark);
+    color: #000000;
     text-shadow: none;
     -webkit-text-stroke: 0;
     background: var(--neo-yellow);
@@ -631,7 +631,7 @@ body {
     font-weight: 800;
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: var(--text-dark);
+    color: #000000;
     background: var(--neo-yellow);
     padding: 2px 6px;
     border: 1.5px solid var(--border-color);

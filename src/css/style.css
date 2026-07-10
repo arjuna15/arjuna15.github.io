@@ -1109,6 +1109,10 @@ body.has-custom-cursor .cursor-dot { display: block; }
     background-color: var(--card-bg) !important;
 }
 
+[data-theme="dark"] .site-nav a:hover {
+    color: #ffffff !important;
+}
+
 /* Dark Mode Text Readability Tweaks */
 [data-theme="dark"] .hero-subtitle {
     color: rgba(255, 255, 255, 0.85) !important;

@@ -1,4 +1,27 @@
+// Theme Switcher Initialization (runs immediately to prevent flash)
+const getPreferredTheme = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) return savedTheme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+};
+setTheme(getPreferredTheme());
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Set up click handlers for theme togglers
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const handleThemeToggle = () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    };
+    if (themeToggle) themeToggle.addEventListener('click', handleThemeToggle);
+    if (themeToggleMobile) themeToggleMobile.addEventListener('click', handleThemeToggle);
+
     const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
     const hasFinePointer = window.matchMedia?.('(pointer: fine)')?.matches ?? false;
     const hasHover = window.matchMedia?.('(hover: hover)')?.matches ?? false;

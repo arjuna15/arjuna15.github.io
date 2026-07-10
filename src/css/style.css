@@ -1,7 +1,11 @@
 :root {
     --bg: #f5f4f0; /* Classic Neo-Brutalist Light Warm Background */
+    --card-bg: #ffffff;
     --text: #000000;
     --text-dark: #000000;
+    --border-color: #000000;
+    --grid-line: rgba(0, 0, 0, 0.04);
+    --grid-dot: rgba(0, 0, 0, 0.08);
     
     /* Neo-Brutalist Bold Colors */
     --neo-yellow: #ffe135;
@@ -13,7 +17,6 @@
     --neo-orange: #ff9100;
     
     --border-width: 3px;
-    --border-color: #000000;
     
     --shadow-offset: 6px;
     --shadow-offset-lg: 10px;
@@ -25,6 +28,17 @@
     --header-h: 74px;
     --header-top: 18px;
     --ring: 0 0 0 4px #ffe135;
+}
+
+[data-theme="dark"] {
+    --bg: #121212; /* Dark Brutalist Background */
+    --card-bg: #1c1c1e; /* Dark Card Background */
+    --text: #ffffff;
+    --text-dark: #ffffff;
+    --border-color: #ffffff; /* Contrast white borders */
+    --grid-line: rgba(255, 255, 255, 0.05);
+    --grid-dot: rgba(255, 255, 255, 0.09);
+    --ring: 0 0 0 4px #00f0ff;
 }
 
 * { 
@@ -43,9 +57,9 @@ html {
 body {
     background-color: var(--bg);
     background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-        radial-gradient(rgba(0, 0, 0, 0.08) 1.5px, transparent 1.5px);
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        radial-gradient(var(--grid-dot) 1.5px, transparent 1.5px);
     background-size: 20px 20px, 20px 20px, 40px 40px;
     background-position: 0 0, 0 0, 10px 10px;
     color: var(--text);
@@ -1013,4 +1027,109 @@ body.has-custom-cursor .cursor-dot { display: block; }
     .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .contact-card { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
     .contact-actions { justify-items: end; }
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-btn {
+    background: var(--neo-yellow);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--border-color);
+    color: #000000;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin-left: 16px;
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-toggle-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border-color);
+}
+
+.theme-toggle-btn:active {
+    transform: translate(0px, 0px);
+    box-shadow: 3px 3px 0px var(--border-color);
+}
+
+/* Mobile Bottom Nav Theme Toggle Button Overrides */
+.mobile-bottom-nav .theme-toggle-mobile {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    box-shadow: none !important;
+}
+
+.mobile-bottom-nav .theme-toggle-mobile:hover {
+    transform: none !important;
+    background: none !important;
+}
+
+/* Hide/Show Icons based on Active Theme */
+[data-theme="dark"] .sun-icon,
+[data-theme="dark"] .sun-icon-mob {
+    display: none;
+}
+
+[data-theme="dark"] .moon-icon,
+[data-theme="dark"] .moon-icon-mob {
+    display: block !important;
+}
+
+/* Dark Mode Overrides for Hardcoded White Elements */
+[data-theme="dark"] .about-card,
+[data-theme="dark"] .highlight,
+[data-theme="dark"] .skills-card,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .project-card.featured,
+[data-theme="dark"] .contact-form,
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea,
+[data-theme="dark"] .social-badge,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .nav-toggle,
+[data-theme="dark"] .site-nav a:hover,
+[data-theme="dark"] .project-media img {
+    background-color: var(--card-bg) !important;
+}
+
+/* Dark Mode Text Readability Tweaks */
+[data-theme="dark"] .muted,
+[data-theme="dark"] p.muted,
+[data-theme="dark"] .project-card .muted,
+[data-theme="dark"] .about-card .muted,
+[data-theme="dark"] .skills-card .muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-theme="dark"] .eyebrow {
+    color: #000000 !important;
+}
+
+[data-theme="dark"] .form-group label {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .mobile-bottom-nav {
+    background: #000000;
+}
+
+[data-theme="dark"] .mobile-bottom-nav .nav-item.active {
+    background: #222222;
+}
+
+/* Adjust project-media grid canvas in dark mode for contrast */
+[data-theme="dark"] .project-media {
+    background-color: #1f1f23;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }

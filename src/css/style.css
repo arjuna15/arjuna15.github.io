@@ -336,8 +336,8 @@ body {
 
 .badge {
     padding: 8px 16px;
-    background: #ffffff;
-    color: var(--text-dark);
+    background: var(--card-bg);
+    color: var(--text);
     font-weight: 700;
     text-transform: uppercase;
     border: var(--border-width) solid var(--border-color);
@@ -721,10 +721,12 @@ body {
     transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.social-badge i {
+.social-badge i,
+.social-badge svg {
     width: 18px;
     height: 18px;
     stroke-width: 2.5px;
+    display: inline-block;
 }
 
 .social-badge:hover {
@@ -882,11 +884,13 @@ body.has-custom-cursor .cursor-dot { display: block; }
     font-size: 0.75rem;
 }
 
-.mobile-bottom-nav .nav-item i {
+.mobile-bottom-nav .nav-item i,
+.mobile-bottom-nav .nav-item svg {
     width: 24px;
     height: 24px;
     stroke-width: 2.5px;
     margin-bottom: 2px;
+    display: inline-block;
 }
 
 .mobile-bottom-nav .nav-item span {
@@ -1098,6 +1102,10 @@ body.has-custom-cursor .cursor-dot { display: block; }
 }
 
 /* Dark Mode Text Readability Tweaks */
+[data-theme="dark"] .hero-subtitle {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
 [data-theme="dark"] .muted,
 [data-theme="dark"] p.muted,
 [data-theme="dark"] .project-card .muted,

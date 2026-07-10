@@ -1103,14 +1103,19 @@ body.has-custom-cursor .cursor-dot { display: block; }
 }
 
 /* Hide/Show Icons based on Active Theme */
+.moon-icon,
+.moon-icon-mob {
+    display: none !important;
+}
+
 [data-theme="dark"] .sun-icon,
 [data-theme="dark"] .sun-icon-mob {
-    display: none;
+    display: none !important;
 }
 
 [data-theme="dark"] .moon-icon,
 [data-theme="dark"] .moon-icon-mob {
-    display: block !important;
+    display: inline-block !important;
 }
 
 /* Dark Mode Overrides for Hardcoded White Elements */

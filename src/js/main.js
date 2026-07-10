@@ -223,6 +223,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Handle Contact Form Submit and Redirect to WhatsApp
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent standard page reload / submit
+            
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const message = document.getElementById('form-message').value;
+            
+            const waNumber = "6281212142716";
+            const text = `Halo Arjuna, saya *${name}* (${email}).\n\n${message}`;
+            
+            const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+            window.open(waUrl, '_blank');
+        });
+    }
+
     setTimeout(() => highlightBottomNav(), 50);
     window.addEventListener('scroll', highlightBottomNav, { passive: true });
     window.addEventListener('resize', highlightBottomNav, { passive: true });

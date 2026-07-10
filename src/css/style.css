@@ -529,7 +529,7 @@ body::after {
 .project-media {
     border: var(--border-width) solid var(--border-color);
     background: #ffffff;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1902 / 788;
     margin-bottom: 20px;
     overflow: hidden;
 }
@@ -673,7 +673,7 @@ body::after {
     .project-card.featured .project-media {
         margin-bottom: 0;
         height: auto;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 1902 / 788;
         align-self: center;
     }
 }

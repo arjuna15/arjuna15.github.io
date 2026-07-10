@@ -161,14 +161,14 @@ body {
     border: var(--border-width) solid var(--border-color);
     background: var(--neo-yellow);
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-    color: var(--text-dark);
+    color: #000000;
 }
 
 .logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: 1.5rem;
-    color: var(--text-dark);
+    color: #000000;
     text-transform: uppercase;
     letter-spacing: -0.02em;
 }
@@ -181,7 +181,7 @@ body {
 
 .site-nav a {
     font-weight: 700;
-    color: var(--text-dark);
+    color: #000000;
     padding: 8px 16px;
     border: 2px solid transparent;
     text-transform: uppercase;
@@ -271,7 +271,7 @@ body {
     font-weight: 800;
     font-size: 1.5rem;
     text-transform: uppercase;
-    color: var(--text-dark);
+    color: #000000;
     background: var(--neo-yellow);
     padding: 4px 10px;
     border: var(--border-width) solid var(--border-color);

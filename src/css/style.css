@@ -572,11 +572,12 @@ body {
     background: var(--neo-yellow);
     border: 2px solid var(--border-color);
     box-shadow: 2px 2px 0px var(--border-color);
-    color: var(--text-dark);
+    color: #000000;
 }
 
 .chip-quiet {
-    background: #ffffff;
+    background: var(--card-bg);
+    color: var(--text) !important;
 }
 
 .chip-blue {

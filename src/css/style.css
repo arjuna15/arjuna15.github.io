@@ -527,16 +527,16 @@ body {
     width: 100%;
     height: auto;
     object-fit: contain;
-    border: 2px solid #000000;
-    box-shadow: 4px 4px 0px #000000;
-    background-color: #ffffff;
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px 0px var(--border-color);
+    background-color: var(--card-bg);
     display: block;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
 }
 
 .project-card:hover .project-media img {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px #000000;
+    transform: scale(1.1) translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--border-color);
 }
 
 .project-actions {
@@ -729,15 +729,17 @@ body {
     display: inline-block;
 }
 
+.social-badge.linkedin { background: var(--neo-cyan); color: #000000; }
+.social-badge.github { background: #ffffff; color: #000000; }
+.social-badge.instagram { background: var(--neo-pink); color: #000000; }
+.social-badge.whatsapp { background: var(--neo-green); color: #000000; }
+
 .social-badge:hover {
     transform: translate(-3px, -3px);
     box-shadow: 7px 7px 0px var(--border-color);
+    background: var(--neo-yellow) !important;
+    color: #000000 !important;
 }
-
-.social-badge.linkedin:hover { background: var(--neo-cyan); }
-.social-badge.github:hover { background: #ffffff; }
-.social-badge.instagram:hover { background: var(--neo-purple); color: #ffffff; }
-.social-badge.whatsapp:hover { background: var(--neo-green); }
 
 .contact-right {
     display: flex;
@@ -982,18 +984,18 @@ body.has-custom-cursor .cursor-dot { display: block; }
 }
 
 .shape-text-marquee {
-    top: 4%;
-    right: -5%;
-    font-size: clamp(0.9rem, 2vw, 1.3rem);
+    top: 130px;
+    right: 2%;
+    font-size: clamp(0.8rem, 1.8vw, 1.1rem);
     color: #000000;
     background: var(--neo-yellow);
     border: var(--border-width) solid var(--border-color);
     box-shadow: 4px 4px 0px var(--border-color);
-    padding: 6px 16px;
-    transform: rotate(4deg);
+    padding: 8px 18px;
+    transform: rotate(-3deg);
     white-space: nowrap;
-    opacity: 0.75; /* make the marquee more visible/readable */
-    z-index: 10;
+    opacity: 0.85;
+    z-index: 5;
 }
 
 @keyframes rotate-slow {
@@ -1093,7 +1095,6 @@ body.has-custom-cursor .cursor-dot { display: block; }
 [data-theme="dark"] .contact-form,
 [data-theme="dark"] .form-group input,
 [data-theme="dark"] .form-group textarea,
-[data-theme="dark"] .social-badge,
 [data-theme="dark"] .btn-secondary,
 [data-theme="dark"] .nav-toggle,
 [data-theme="dark"] .site-nav a:hover,

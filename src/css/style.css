@@ -1119,8 +1119,6 @@ body.has-custom-cursor .cursor-dot { display: block; }
 }
 
 /* Dark Mode Overrides for Hardcoded White Elements */
-[data-theme="dark"] .about-card,
-[data-theme="dark"] .highlight,
 [data-theme="dark"] .skills-card,
 [data-theme="dark"] .project-card,
 [data-theme="dark"] .project-card.featured,
@@ -1132,6 +1130,25 @@ body.has-custom-cursor .cursor-dot { display: block; }
 [data-theme="dark"] .site-nav a:hover,
 [data-theme="dark"] .project-media img {
     background-color: var(--card-bg) !important;
+}
+
+/* Custom Colorful Card Backgrounds in Dark Mode */
+[data-theme="dark"] .about-card {
+    background-color: #241b35 !important; /* Deep Dark Purple */
+}
+[data-theme="dark"] .highlight:nth-child(1) { background-color: var(--neo-pink) !important; }
+[data-theme="dark"] .highlight:nth-child(2) { background-color: var(--neo-yellow) !important; }
+[data-theme="dark"] .highlight:nth-child(3) { background-color: var(--neo-green) !important; }
+[data-theme="dark"] .highlight:nth-child(4) { background-color: var(--neo-blue) !important; }
+
+/* Enforce High Contrast Text inside Highlights (Both Themes) */
+.highlight:nth-child(1) h3, .highlight:nth-child(1) p,
+.highlight:nth-child(2) h3, .highlight:nth-child(2) p,
+.highlight:nth-child(3) h3, .highlight:nth-child(3) p {
+    color: #000000 !important;
+}
+.highlight:nth-child(4) h3, .highlight:nth-child(4) p {
+    color: #ffffff !important;
 }
 
 [data-theme="dark"] .site-nav a:hover {

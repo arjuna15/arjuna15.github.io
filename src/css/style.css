@@ -1090,8 +1090,8 @@ body.has-custom-cursor .cursor-dot { display: block; }
     position: absolute;
     top: 60%;
     left: 3%;
-    background: #ffffff !important;
-    color: #000000 !important;
+    background: #ffffff;
+    color: #000000;
     border: 2px solid var(--border-color) !important;
     padding: 6px 12px;
     font-family: 'Space Grotesk', monospace;
@@ -1267,6 +1267,12 @@ body.has-custom-cursor .cursor-dot { display: block; }
 [data-theme="dark"] .highlight:nth-child(2) { background-color: var(--neo-yellow) !important; }
 [data-theme="dark"] .highlight:nth-child(3) { background-color: var(--neo-green) !important; }
 [data-theme="dark"] .highlight:nth-child(4) { background-color: var(--neo-blue) !important; }
+
+/* Invert Barcode Colors in Dark Mode */
+[data-theme="dark"] .shape-barcode {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
 
 /* Enforce High Contrast Text inside Highlights (Both Themes) */
 .highlight:nth-child(1) h3, .highlight:nth-child(1) p, .highlight:nth-child(1) .muted,

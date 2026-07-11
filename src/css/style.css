@@ -171,8 +171,6 @@ body {
     color: #000000;
     
     /* Neo-Brutalist Tilt */
-    width: 104%;
-    margin-left: -2%;
     transform: rotate(-1.2deg);
     transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

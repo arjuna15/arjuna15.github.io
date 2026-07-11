@@ -1146,6 +1146,10 @@ body.has-custom-cursor .cursor-dot { display: block; }
     z-index: 1;
     font-weight: 700;
     text-align: right;
+    
+    /* Reset decor-shape stroke/shadow overrides that obscure small text */
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
 }
 
 @keyframes rotate-slow {

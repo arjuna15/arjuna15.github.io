@@ -1142,12 +1142,12 @@ body.has-custom-cursor .cursor-dot { display: block; }
 [data-theme="dark"] .highlight:nth-child(4) { background-color: var(--neo-blue) !important; }
 
 /* Enforce High Contrast Text inside Highlights (Both Themes) */
-.highlight:nth-child(1) h3, .highlight:nth-child(1) p,
-.highlight:nth-child(2) h3, .highlight:nth-child(2) p,
-.highlight:nth-child(3) h3, .highlight:nth-child(3) p {
+.highlight:nth-child(1) h3, .highlight:nth-child(1) p, .highlight:nth-child(1) .muted,
+.highlight:nth-child(2) h3, .highlight:nth-child(2) p, .highlight:nth-child(2) .muted,
+.highlight:nth-child(3) h3, .highlight:nth-child(3) p, .highlight:nth-child(3) .muted {
     color: #000000 !important;
 }
-.highlight:nth-child(4) h3, .highlight:nth-child(4) p {
+.highlight:nth-child(4) h3, .highlight:nth-child(4) p, .highlight:nth-child(4) .muted {
     color: #ffffff !important;
 }
 

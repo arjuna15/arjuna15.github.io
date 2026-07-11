@@ -30,6 +30,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Enable reveal styles only when JS is running (prevents hidden content if JS/CDNs fail).
     document.body.classList.add('reveal-on');
 
+    // Initialize Lenis Smooth Scroll
+    let lenis;
+    if (allowMotion && typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 0.95,
+            smoothTouch: false,
+            touchMultiplier: 1.5,
+            infinite: false,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Bind Lenis scrolling to all internal anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                // Allow skip-link to work normally
+                if (this.classList.contains('skip-link')) return;
+
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    lenis.scrollTo(target);
+                }
+            });
+        });
+
+        // Integrate Lenis with GSAP ScrollTrigger
+        if (typeof ScrollTrigger !== 'undefined') {
+            lenis.on('scroll', ScrollTrigger.update);
+        }
+    }
+
     // Lucide Icons setup
     try {
         window.lucide?.createIcons?.();

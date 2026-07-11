@@ -16,10 +16,10 @@
     --neo-purple: #bb86fc;
     --neo-orange: #ff9100;
     
-    --border-width: 3px;
+    --border-width: 4px;
     
-    --shadow-offset: 6px;
-    --shadow-offset-lg: 10px;
+    --shadow-offset: 8px;
+    --shadow-offset-lg: 12px;
     
     --radius: 0px; /* Sharp corners is key to classic Neo-Brutalism */
     --radius-sm: 0px;
@@ -421,6 +421,13 @@ body {
     border: var(--border-width) solid var(--border-color);
     padding: 40px;
     box-shadow: var(--shadow-offset-lg) var(--shadow-offset-lg) 0px var(--border-color);
+    transform: rotate(-0.8deg);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+}
+
+.about-card:hover {
+    transform: rotate(0deg) translate(-8px, -8px);
+    box-shadow: 18px 18px 0px var(--border-color);
 }
 
 .about-icon {
@@ -469,12 +476,20 @@ body {
     border: var(--border-width) solid var(--border-color);
     padding: 24px;
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-    transition: transform 0.15s;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+}
+
+.highlight:nth-child(even) {
+    transform: rotate(0.6deg);
+}
+
+.highlight:nth-child(odd) {
+    transform: rotate(-0.6deg);
 }
 
 .highlight:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0px var(--border-color);
+    transform: rotate(0deg) translate(-6px, -6px);
+    box-shadow: 12px 12px 0px var(--border-color);
 }
 
 .highlight:nth-child(1) { background: var(--neo-pink); }
@@ -505,14 +520,26 @@ body {
     border: var(--border-width) solid var(--border-color);
     padding: 24px;
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
 }
 
+.project-card:nth-child(3n+1) {
+    transform: rotate(-0.5deg);
+}
+
+.project-card:nth-child(3n+2) {
+    transform: rotate(0.4deg);
+}
+
+.project-card:nth-child(3n+3) {
+    transform: rotate(-0.3deg);
+}
+
 .project-card:hover {
-    transform: translate(-6px, -6px);
-    box-shadow: 12px 12px 0px var(--border-color);
+    transform: rotate(0deg) translate(-8px, -8px);
+    box-shadow: 16px 16px 0px var(--border-color);
 }
 
 .project-media {

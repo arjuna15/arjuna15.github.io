@@ -24,7 +24,7 @@
     --radius: 0px; /* Sharp corners is key to classic Neo-Brutalism */
     --radius-sm: 0px;
     
-    --container: 1100px;
+    --container: 1360px;
     --header-h: 74px;
     --header-top: 18px;
     --ring: 0 0 0 4px #ffe135;
@@ -111,7 +111,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--neo-pink); }
 
 .container {
-    width: min(var(--container), calc(100% - 40px));
+    width: min(var(--container), calc(100% - 60px));
     margin: 0 auto;
 }
 
@@ -1064,8 +1064,8 @@ body.has-custom-cursor .cursor-dot { display: block; }
     padding: 8px 18px;
     transform: rotate(-3deg);
     white-space: nowrap;
-    opacity: 0.85;
-    z-index: 5;
+    opacity: 0.25;
+    z-index: 1;
 }
 
 .shape-giant-watermark {
@@ -1074,7 +1074,7 @@ body.has-custom-cursor .cursor-dot { display: block; }
     font-weight: 900;
     font-size: clamp(8rem, 20vw, 15rem);
     color: var(--border-color);
-    opacity: 0.035;
+    opacity: 0.006;
     writing-mode: vertical-rl;
     text-transform: uppercase;
     top: 15%;
@@ -1130,7 +1130,7 @@ body.has-custom-cursor .cursor-dot { display: block; }
     transform: rotate(5deg);
     box-shadow: 4px 4px 0px var(--border-color) !important;
     font-size: 0.85rem;
-    opacity: 0.85;
+    opacity: 0.25;
     z-index: 1;
     letter-spacing: 0.05em;
 }

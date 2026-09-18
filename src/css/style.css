@@ -398,8 +398,8 @@ body {
 }
 
 .btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 4px 4px 0px var(--border-color);
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px var(--border-color);
 }
 
 .btn-small {
@@ -411,6 +411,11 @@ body {
 .btn-small:hover {
     box-shadow: 6px 6px 0px var(--border-color);
     transform: translate(-2px, -2px);
+}
+
+.btn-small:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--border-color);
 }
 
 .magnetic-area { 
@@ -1333,3 +1338,143 @@ body.has-custom-cursor .cursor-dot { display: block; }
         linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
+
+/* ==========================================================================
+   Elevated Neo-Brutalist Features: Filters, Quick-Copy & Toast
+   ========================================================================== */
+
+/* Project Filter Bar */
+.project-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.filter-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 8px 16px;
+    background: var(--card-bg);
+    color: var(--text);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--border-color);
+    cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.filter-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border-color);
+    background: var(--neo-yellow);
+    color: #000000;
+}
+
+.filter-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--border-color);
+}
+
+.filter-btn.active {
+    background: var(--neo-pink);
+    color: #ffffff;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--border-color);
+}
+
+[data-theme="dark"] .filter-btn.active {
+    color: #000000;
+}
+
+.project-card.is-hidden {
+    display: none !important;
+}
+
+/* Quick Copy Chips in Hero */
+.hero-quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.btn-copy-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    background: var(--card-bg);
+    color: var(--text);
+    border: 2px solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--border-color);
+    cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-copy-chip:hover {
+    background: var(--neo-cyan);
+    color: #000000;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border-color);
+}
+
+.btn-copy-chip:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--border-color);
+}
+
+.copy-badge {
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.72rem;
+    padding: 2px 6px;
+    margin-left: 4px;
+    font-weight: 800;
+}
+
+[data-theme="dark"] .copy-badge {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Brutalist Toast Notification */
+.brutalist-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--neo-yellow);
+    color: #000000;
+    border: var(--border-width) solid #000000;
+    box-shadow: 5px 5px 0px #000000;
+    padding: 12px 20px;
+    font-family: 'Space Grotesk', monospace;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    z-index: 10000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.brutalist-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Form UX Hint */
+.form-hint {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    opacity: 0.8;
+}
+

@@ -189,6 +189,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Quick Copy functionality with Toast Notification
+    const copyBtns = document.querySelectorAll('.btn-copy-chip');
+    const toast = document.getElementById('brutalist-toast');
+    let toastTimeout;
+
+    const showToast = (message) => {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.hidden = false;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => { toast.hidden = true; }, 300);
+        }, 2200);
+    };
+
+    copyBtns.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+            const textToCopy = btn.getAttribute('data-copy');
+            if (!textToCopy) return;
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                showToast(`COPIED [${textToCopy}] TO CLIPBOARD! 📋`);
+            } catch (_) {
+                showToast(`COPIED: ${textToCopy}`);
+            }
+        });
+    });
+
+    // Project Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-grid .project-card');
+
+    filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            filterBtns.forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            projectCards.forEach((card) => {
+                const categories = (card.getAttribute('data-category') || '').split(' ');
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.classList.remove('is-hidden');
+                } else {
+                    card.classList.add('is-hidden');
+                }
+            });
+        });
+    });
+
     setTimeout(() => highlightBottomNav(), 50);
     window.addEventListener('scroll', highlightBottomNav, { passive: true });
     window.addEventListener('resize', highlightBottomNav, { passive: true });

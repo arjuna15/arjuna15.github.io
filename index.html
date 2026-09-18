@@ -23,11 +23,11 @@
     <meta property="twitter:image" content="https://arjunaarasyid.com/img/puncakmediabogor.webp">
 
     <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23ffe135' stroke='%23000' stroke-width='10'/><text y='70' x='50' font-size='60' font-weight='900' font-family='sans-serif' text-anchor='middle' fill='%23000'>A</text></svg>">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
     <script defer src="src/js/main.js"></script>
 </head>
@@ -63,7 +63,7 @@
 
     <header class="site-header">
         <div class="container header-inner">
-            <a class="logo" href="#hero" aria-label="Go to top"></a>
+            <a class="logo" href="#hero" aria-label="Go to top">ARJUNA ARRASYID</a>
 
             <nav class="site-nav" aria-label="Primary">
                 <a href="#about">About</a>
@@ -113,6 +113,17 @@
                     <div class="magnetic-area">
                         <a class="btn btn-secondary" href="#contact">Get in touch</a>
                     </div>
+                </div>
+
+                <div class="hero-quick-actions reveal">
+                    <button type="button" class="btn-copy-chip" data-copy="arjunaarasyid62@gmail.com" title="Click to copy email">
+                        <span>✉ arjunaarasyid62@gmail.com</span>
+                        <span class="copy-badge">COPY</span>
+                    </button>
+                    <button type="button" class="btn-copy-chip" data-copy="+6281212142716" title="Click to copy WhatsApp">
+                        <span>💬 +62 812-1214-2716</span>
+                        <span class="copy-badge">COPY</span>
+                    </button>
                 </div>
 
                 <div class="hero-badges reveal" aria-label="Key strengths">
@@ -171,9 +182,17 @@
                     <p class="muted">Real products I’ve shipped—booking flows, travel/service landing pages, and conversion‑ready UX.</p>
                 </div>
 
+                
+                <div class="project-filter-bar reveal" role="tablist" aria-label="Filter Projects">
+                    <button type="button" class="filter-btn active" data-filter="all">ALL [12]</button>
+                    <button type="button" class="filter-btn" data-filter="travel-villa">VILLA &amp; TRAVEL [7]</button>
+                    <button type="button" class="filter-btn" data-filter="ota-system">OTA &amp; SYSTEMS [3]</button>
+                    <button type="button" class="filter-btn" data-filter="other">AGENCY &amp; OTHER [2]</button>
+                </div>
+
                 <div class="project-grid">
                     <!-- Featured Case Study 1: Escava -->
-                    <article class="project-card featured glass">
+                    <article class="project-card featured glass" data-category="travel-villa ota-system">
                         <div class="project-media">
                             <img src="img/escapeplan.webp" alt="Escava — glamping OTA platform preview" loading="lazy" decoding="async">
                         </div>
@@ -205,7 +224,7 @@
                     </article>
 
                     <!-- Featured Case Study 2: Kemang Indah -->
-                    <article class="project-card featured glass">
+                    <article class="project-card featured glass" data-category="ota-system">
                         <div class="project-media">
                             <img src="img/kemangindah.webp" alt="Kemang Indah — property website preview" loading="lazy" decoding="async">
                         </div>
@@ -237,7 +256,7 @@
                     </article>
 
                     <!-- Featured Case Study 3: Puncak Media Bogor -->
-                    <article class="project-card featured glass">
+                    <article class="project-card featured glass" data-category="travel-villa ota-system">
                         <div class="project-media">
                             <img src="img/puncakmediabogor.webp" alt="Puncak Media Bogor — villa booking website preview" loading="lazy" decoding="async">
                         </div>
@@ -268,7 +287,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="travel-villa">
                         <div class="project-media">
                             <img src="img/reservasivp.webp" alt="Reservasi Villa Puncak — villa booking website preview" loading="lazy" decoding="async">
                         </div>
@@ -287,26 +306,8 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
-                        <div class="project-media">
-                            <img src="img/demoweb.png" alt="Demo Web Villa — villa booking demo preview" loading="lazy" decoding="async">
-                        </div>
-                        <div class="project-top">
-                            <div class="project-top-row">
-                                <span class="chip chip-blue">Villa Demo</span>
-                            </div>
-                            <div class="project-top-row">
-                                <span class="chip chip-quiet">UI/UX Testing • Prototype</span>
-                            </div>
-                        </div>
-                        <h3 class="project-title">Demo Web Villa</h3>
-                        <p class="muted">Website demo villa untuk pengujian user interface dan alur booking ke calon pengguna.</p>
-                        <div class="project-actions">
-                            <a class="btn btn-small btn-secondary" href="https://demo.bikinwebdikitaaja.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Demo Web Villa in a new tab">Live</a>
-                        </div>
-                    </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="travel-villa">
                         <div class="project-media">
                             <img src="img/jejakvilla.webp" alt="Jejak Villa — villa booking website preview" loading="lazy" decoding="async">
                         </div>
@@ -325,7 +326,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="other">
                         <div class="project-media">
                             <img src="img/bikinwebdikitaaja.webp" alt="Bikin Web Di Kita Aja — agency website preview" loading="lazy" decoding="async">
                         </div>
@@ -344,7 +345,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="travel-villa">
                         <div class="project-media">
                             <img src="img/abdulsomad.webp" alt="Abdul Somad Travel — private driver travel landing preview" loading="lazy" decoding="async">
                         </div>
@@ -363,7 +364,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="travel-villa">
                         <div class="project-media">
                             <img src="img/aburayyan.webp" alt="Abu Rayyan Travel — private driver travel landing preview" loading="lazy" decoding="async">
                         </div>
@@ -382,7 +383,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="other">
                         <div class="project-media">
                             <img src="img/pernikahanryanfira.webp" alt="Ryan and Fira wedding invitation — website preview" loading="lazy" decoding="async">
                         </div>
@@ -401,7 +402,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="travel-villa">
                         <div class="project-media">
                             <img src="img/ngevillayuk.webp" alt="Ngevillayuk — villa booking platform preview" loading="lazy" decoding="async">
                         </div>
@@ -420,7 +421,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="other">
                         <div class="project-media">
                             <img src="img/umiba.png" alt="Universitas Mitra Bangsa — official campus website preview" loading="lazy" decoding="async">
                         </div>
@@ -439,7 +440,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card glass">
+                    <article class="project-card glass" data-category="ota-system">
                         <div class="project-media">
                             <img src="img/lms_siakad.png" alt="LMS SIAKAD — academic portal and learning system preview" loading="lazy" decoding="async">
                         </div>
@@ -501,7 +502,8 @@
                             <label for="form-message">Message</label>
                             <textarea id="form-message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary form-submit-btn">Send Message ➔</button>
+                                                <button type="submit" class="btn btn-primary form-submit-btn">Chat via WhatsApp ➔</button>
+                        <p class="form-hint">⚡ Opens WhatsApp directly with your pre-filled inquiry</p>
                     </form>
                 </div>
             </div>
@@ -541,5 +543,6 @@
             <span>Theme</span>
         </button>
     </nav>
+    <div id="brutalist-toast" class="brutalist-toast" aria-live="polite" hidden></div>
 </body>
 </html>

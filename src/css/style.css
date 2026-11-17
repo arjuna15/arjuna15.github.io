@@ -278,8 +278,8 @@ body {
 
 .hero-inner {
     display: grid;
-    gap: 22px;
-    max-width: 1040px;
+    gap: 24px;
+    width: 100%;
 }
 
 .hero-top-badge {

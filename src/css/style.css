@@ -426,47 +426,71 @@ body {
 .about-grid {
     display: grid;
     gap: 32px;
+    align-items: stretch;
 }
 
 .about-card {
-    background: var(--neo-cyan);
+    background: var(--card-bg);
     color: var(--text-dark);
     border: var(--border-width) solid var(--border-color);
-    padding: 40px;
+    padding: 36px;
     box-shadow: var(--shadow-offset-lg) var(--shadow-offset-lg) 0px var(--border-color);
-    transform: rotate(-0.8deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
 }
 
 .about-card:hover {
-    transform: rotate(0deg) translate(-8px, -8px);
-    box-shadow: 18px 18px 0px var(--border-color);
+    transform: translate(-4px, -4px);
+    box-shadow: 16px 16px 0px var(--border-color);
+}
+
+.about-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
 }
 
 .about-icon {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     display: grid;
     place-items: center;
     border: var(--border-width) solid var(--border-color);
     background: var(--neo-yellow);
-    margin-bottom: 24px;
     color: #000000;
-    box-shadow: 4px 4px 0px var(--border-color);
+    box-shadow: 3px 3px 0px var(--border-color);
 }
-.about-icon svg { width: 28px; height: 28px; }
+.about-icon svg { width: 26px; height: 26px; }
+
+.about-badge {
+    font-family: 'Space Grotesk', monospace;
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    background: var(--neo-cyan);
+    color: #000000;
+    border: 2px solid var(--border-color);
+    box-shadow: 2px 2px 0px var(--border-color);
+    letter-spacing: 0.05em;
+}
 
 .about-card h2.section-title {
     color: var(--text-dark);
     border-bottom: var(--border-width) solid var(--border-color);
     padding-bottom: 12px;
     margin-bottom: 20px;
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    line-height: 1.2;
 }
 
 .about-card .lead {
     margin-bottom: 16px;
-    font-size: 1.3rem;
-    line-height: 1.4;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: var(--text-dark);
 }
 
 .about-card .lead .accent {
@@ -476,48 +500,147 @@ body {
     background: var(--neo-yellow);
     padding: 2px 6px;
     border: 2px solid var(--border-color);
+    font-weight: 800;
 }
 
+.about-card p.muted {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Stats Row inside About Card */
+.about-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 2px dashed var(--border-color);
+}
+
+.stat-box {
+    background: var(--bg);
+    border: 2px solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--border-color);
+    padding: 12px 10px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--border-color);
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.1;
+}
+
+.stat-label {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+/* 2x2 Highlights Grid */
 .about-highlights {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
 .highlight {
-    background: #ffffff;
+    background: var(--card-bg);
     color: var(--text-dark);
     border: var(--border-width) solid var(--border-color);
-    padding: 24px;
+    padding: 22px;
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
 }
 
-.highlight:nth-child(even) {
-    transform: rotate(0.6deg);
-}
-
-.highlight:nth-child(odd) {
-    transform: rotate(-0.6deg);
-}
-
 .highlight:hover {
-    transform: rotate(0deg) translate(-6px, -6px);
-    box-shadow: 12px 12px 0px var(--border-color);
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px var(--border-color);
 }
 
-.highlight:nth-child(1) { background: var(--neo-pink); }
-.highlight:nth-child(2) { background: var(--neo-yellow); }
-.highlight:nth-child(3) { background: var(--neo-green); }
-.highlight:nth-child(4) { background: var(--neo-blue); color: #ffffff; }
-.highlight:nth-child(4) .muted { color: rgba(255, 255, 255, 0.85); }
+.hl-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.hl-icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--border-color);
+    box-shadow: 2px 2px 0px var(--border-color);
+    color: #000000;
+}
+
+.hl-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.hl-icon-pink { background: var(--neo-pink); }
+.hl-icon-yellow { background: var(--neo-yellow); }
+.hl-icon-green { background: var(--neo-green); }
+.hl-icon-blue { background: var(--neo-cyan); }
+
+.hl-tag {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border: 2px solid var(--border-color);
+    background: var(--bg);
+    color: var(--text);
+    box-shadow: 2px 2px 0px var(--border-color);
+    letter-spacing: 0.05em;
+}
 
 .highlight h3 {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 1.2rem;
-    text-transform: uppercase;
+    font-size: 1.15rem;
+    color: var(--text-dark);
     margin-bottom: 8px;
     letter-spacing: -0.01em;
+}
+
+.highlight p.muted {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text);
+    opacity: 0.85;
+}
+
+@media (max-width: 640px) {
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
+    .about-stats-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
 }
 
 /* Experience Section */
@@ -1335,7 +1458,7 @@ body.has-custom-cursor .cursor-dot { display: block; }
 @media (min-width: 900px) {
     .site-nav { display: flex; }
     .nav-toggle { display: none; }
-    .about-grid { grid-template-columns: 1.2fr 0.8fr; align-items: start; }
+    .about-grid { grid-template-columns: 1.15fr 0.85fr; align-items: stretch; }
     .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .contact-card { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
     .contact-actions { justify-items: end; }
@@ -1411,30 +1534,7 @@ body.has-custom-cursor .cursor-dot { display: block; }
     background-color: var(--card-bg) !important;
 }
 
-/* Custom Colorful Card Backgrounds in Dark Mode */
-[data-theme="dark"] .about-card {
-    background-color: #241b35 !important; /* Deep Dark Purple */
-}
-[data-theme="dark"] .highlight:nth-child(1) { background-color: var(--neo-pink) !important; }
-[data-theme="dark"] .highlight:nth-child(2) { background-color: var(--neo-yellow) !important; }
-[data-theme="dark"] .highlight:nth-child(3) { background-color: var(--neo-green) !important; }
-[data-theme="dark"] .highlight:nth-child(4) { background-color: var(--neo-blue) !important; }
-
 /* Invert Barcode Colors in Dark Mode */
-[data-theme="dark"] .shape-barcode {
-    background: #000000 !important;
-    color: #ffffff !important;
-}
-
-/* Enforce High Contrast Text inside Highlights (Both Themes) */
-.highlight:nth-child(1) h3, .highlight:nth-child(1) p, .highlight:nth-child(1) .muted,
-.highlight:nth-child(2) h3, .highlight:nth-child(2) p, .highlight:nth-child(2) .muted,
-.highlight:nth-child(3) h3, .highlight:nth-child(3) p, .highlight:nth-child(3) .muted {
-    color: #000000 !important;
-}
-.highlight:nth-child(4) h3, .highlight:nth-child(4) p, .highlight:nth-child(4) .muted {
-    color: #ffffff !important;
-}
 
 [data-theme="dark"] .site-nav a:hover {
     color: #ffffff !important;

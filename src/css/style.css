@@ -942,6 +942,10 @@ body {
     color: var(--text-dark);
 }
 
+.project-card:not(.featured) .project-title {
+    min-height: 2.4em;
+}
+
 .project-card p.muted {
     font-size: 0.9rem;
     line-height: 1.55;

@@ -1686,7 +1686,7 @@ body {
     height: 24px;
     background: var(--neo-yellow);
     border: 2px solid var(--border-color);
-    z-index: 999;
+    z-index: 99999;
     pointer-events: none;
     mix-blend-mode: normal;
     display: none;
@@ -1704,7 +1704,7 @@ body {
     width: 6px;
     height: 6px;
     background: var(--border-color);
-    z-index: 1000;
+    z-index: 100000;
     pointer-events: none;
     display: none;
     transform: translate(-50%, -50%);

@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!textToCopy) return;
             try {
                 await navigator.clipboard.writeText(textToCopy);
-                showToast(`COPIED [${textToCopy}] TO CLIPBOARD! 📋`);
+                showToast(`COPIED [${textToCopy}] TO CLIPBOARD!`);
             } catch (_) {
                 showToast(`COPIED: ${textToCopy}`);
             }

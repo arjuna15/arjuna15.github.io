@@ -1209,6 +1209,17 @@ body {
     color: var(--text);
     opacity: 0.7;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.spec-icon {
+    width: 13px;
+    height: 13px;
+    stroke-width: 2.5px;
+    flex-shrink: 0;
+    color: var(--text);
 }
 
 .spec-value {
@@ -1307,6 +1318,15 @@ body {
     font-size: 0.72rem;
     font-weight: 800;
     border: 1.5px solid #000000;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-channel-pill svg {
+    width: 12px;
+    height: 12px;
+    stroke-width: 2.5px;
 }
 
 .contact-form {
@@ -1394,6 +1414,17 @@ body {
     opacity: 0.75;
     margin: 2px 0 0 0;
     line-height: 1.4;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-hint svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5px;
+    flex-shrink: 0;
+    color: var(--neo-yellow);
 }
 
 /* Footer */
@@ -2210,6 +2241,13 @@ body.has-custom-cursor .cursor-dot { display: block; }
     box-shadow: 3px 3px 0px var(--border-color);
     cursor: pointer;
     transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-copy-chip .chip-icon {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2.2px;
+    flex-shrink: 0;
 }
 
 .btn-copy-chip:hover {

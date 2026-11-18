@@ -305,15 +305,33 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-weight: 700;
+    font-family: 'Space Grotesk', monospace;
+    font-weight: 800;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    color: #ffffff;
-    background: #000000;
-    padding: 6px 14px;
-    border: var(--border-width) solid var(--border-color);
+    font-size: 0.82rem;
+    color: #000000 !important;
+    background: var(--neo-yellow);
+    padding: 5px 14px;
+    border: 2px solid var(--border-color);
     box-shadow: 3px 3px 0px var(--border-color);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+}
+
+.hero-top-badge .eyebrow {
+    background: var(--neo-cyan);
+    color: #000000 !important;
+    margin-bottom: 0;
+}
+
+.section-experience .eyebrow {
+    background: var(--neo-yellow);
+    color: #000000 !important;
+}
+
+.section-projects .eyebrow {
+    background: var(--neo-cyan);
+    color: #000000 !important;
 }
 
 .pulse-beacon {
@@ -2207,16 +2225,17 @@ body.has-custom-cursor .cursor-dot { display: block; }
 }
 
 .copy-badge {
-    background: #000000;
-    color: #ffffff;
+    background: var(--neo-yellow);
+    color: #000000;
     font-size: 0.72rem;
     padding: 2px 6px;
     margin-left: 4px;
     font-weight: 800;
+    border: 1px solid var(--border-color);
 }
 
 [data-theme="dark"] .copy-badge {
-    background: #ffffff;
+    background: var(--neo-yellow);
     color: #000000;
 }
 
